@@ -1,0 +1,11 @@
+{{> components/common/modal-close}}
+
+<div class="modal-body">
+  <div class="quick-view-contianer" data-quick-shop-product>
+    {{> components/products/product-single-details
+      quick_view=true
+    }}
+
+    <div class="wishlist-alerts" data-wishlist-message></div>
+  </div>
+</div>

@@ -1,0 +1,76 @@
+<section class="product-tabs" data-product-container>
+  <ul class="tabs" data-tabs>
+    {{#if product.description}}
+      <li class="tab-title tab-description">
+        <a href="#product-description">{{lang 'product.description'}}</a>
+      </li>
+    {{/if}}
+    {{#if settings.show_product_reviews}}
+      <li class="tab-title tab-reviews">
+        <a href="#reviews">
+          {{lang 'product.reviews_tab_title'}}
+          <span
+            class="num-reviews"
+            data-num-reviews="({{product.reviews.list.length}})"
+          ></span>
+        </a>
+      </li>
+    {{/if}}
+    <li class="tab-title tab-additional-info">
+      <a href="#product-additional-info">{{lang 'product.additional_info'}}</a>
+    </li>
+    {{#if product.videos.list.length}}
+      <li
+        class="
+          tab-title
+          tab-videos
+          {{#if theme_settings.product-single-videos-count '==' 0}}
+            video-disabled
+          {{/if}}
+        "
+      >
+        <a href="#product-videos">{{lang 'product.video'}}</a>
+      </li>
+    {{/if}}
+  </ul>
+
+  <div class="tabs-content">
+    {{#if product.description}}
+      {{> components/products/tabs/description}}
+    {{/if}}
+
+    {{#if settings.show_product_reviews}}
+      {{> components/products/tabs/reviews}}
+    {{/if}}
+
+    {{> components/products/tabs/additional-info}}
+
+    {{#if product.videos.list.length}}
+      {{> components/products/tabs/videos}}
+    {{/if}}
+
+    <svg class="icon icon-spinner">
+      <use xlink:href="#icon-spinner" />
+    </svg>
+  </div>
+
+  {{#if settings.add_this.buttons}}
+    <div
+      class="
+        share-block
+        {{#any settings.add_this.buttons service='facebook_like'}}
+          has-like
+        {{/any}}
+      "
+    >
+      <span class="form-label-text share-title">
+        {{lang 'product.share'}}
+      </span>
+      {{> components/common/share-buttons
+        share_buttons=settings.add_this
+        url=product.url
+      }}
+    </div>
+  {{/if}}
+
+</section>

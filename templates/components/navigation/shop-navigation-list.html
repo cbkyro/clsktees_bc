@@ -1,0 +1,126 @@
+<li
+  class="
+    main-nav-item
+    dropdown
+    shop-dropdown
+    {{#if style '==' 'dropdown-meganav'}}
+      mega-nav
+    {{/if}}
+    {{> components/navigation/shop-navigation-classes
+      style=style
+    }}
+  "
+  data-dropdown
+>
+  <a
+    class="dropdown-toggle top-level-nav-link items"
+    href="#"
+    data-dropdown-toggle
+  >
+    {{lang 'header.shop_nav_item'}}
+    <svg class="icon icon-arrow-down">
+      <use xlink:href="#icon-arrow-down" />
+    </svg>
+  </a>
+  {{#if style '==' 'dropdown-meganav'}}
+    {{> components/navigation/mega-navigation
+      full_width=theme_settings.use-fullwidth
+      loop_item=categories
+      show_images=../show_images
+    }}
+  {{else}}
+    <ul
+      class="dropdown-panel"
+      data-dropdown-panel
+      {{#unless style '==' 'dropdown-standard'}}
+        data-position-navigation
+      {{/unless}}
+    >
+      {{#if style '==' 'dropdown-expanded'}}
+        <div
+          class="
+            dropdown-expanded-panel
+            {{#unless theme_settings.use-fullwidth}}
+              contained-width
+            {{/unless}}
+          "
+        >
+      {{/if}}
+      {{#each categories}}
+        {{#if children}}
+          <li
+            class="
+              nav-tier-item
+              has-children
+              {{#if image}}
+                has-image
+                thumbnail-cover
+              {{/if}}
+            "
+            data-tier
+          >
+            {{#if ../../../show_images}}
+              {{#if image}}
+                {{> components/common/image
+                  img=image
+                  url=url
+                  size="nav-image"
+                  class="nav-image"
+                  default=default_image
+                  image_ratio="ratio-4-3"
+                  not_lazy=true
+                }}
+              {{/if}}
+            {{/if}}
+            <a href="{{url}}" data-tier-toggle>
+              {{name}}
+              <svg class="icon icon-arrow-down">
+                <use xlink:href="#icon-arrow-down" />
+              </svg>
+            </a>
+            <ul class="dropdown-tier" data-tier-panel>
+              {{> components/navigation/navigation-item-loop
+                show_all=true
+                style=style
+                show_images=false
+              }}
+            </ul>
+          </li>
+        {{else}}
+          <li
+            class="
+              nav-tier-item
+              {{#if image}}
+                has-image
+                thumbnail-cover
+              {{/if}}
+            "
+          >
+            {{#if ../../../show_images}}
+              {{#if image}}
+                {{> components/common/image
+                  img=image
+                  url=url
+                  size="nav-image"
+                  class="nav-image"
+                  default=default_image
+                  image_ratio="ratio-4-3"
+                  not_lazy=true
+                }}
+              {{/if}}
+            {{/if}}
+            <a href="{{url}}">
+              {{name}}
+            </a>
+          </li>
+        {{/if}}
+      {{/each}}
+      {{#for 1 6}}
+        <li class="nav-tier-item-empty"></li>
+      {{/for}}
+      {{#if style '==' 'dropdown-expanded'}}
+        </div>
+      {{/if}}
+    </ul>
+  {{/if}}
+</li>

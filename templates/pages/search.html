@@ -1,0 +1,86 @@
+---
+product_results:
+    limit: {{theme_settings.product-count}}
+---
+
+{{#partial "page"}}
+
+  <header class="search-header page-header">
+    <h1 class="search-title section-title visible" data-search-title>
+      <span class="search-query-prefix">{{lang 'search.title' num=result_count}}</span>
+      <span class="search-query">{{forms.search.query}}</span>
+    </h1>
+    <div class="container">
+      {{#if theme_settings.show-on-page-seach-form}}
+        {{> components/common/search-form}}
+      {{/if}}
+      {{#unless product_results.faceted_search_enabled}}
+        <div class="dropdown advanced-search-dropdown" data-dropdown>
+          <span class="advanced-search-toggle visible" data-dropdown-toggle>
+            {{lang 'core.advanced_search.title'}}
+          </span>
+          <div class="dropdown-panel advanced-search-panel" data-dropdown-panel>
+            <div class="container">
+              <h1 class="section-title" data-advanced-search-title>
+                {{lang 'core.advanced_search.title'}}
+              </h1>
+              {{> core/forms/advanced-search/advanced-search}}
+            </div>
+          </div>
+        </div>
+      {{/unless}}
+      <div data-tabs>
+        <span class="search-tab-title">
+          <a href="#product-results">
+            {{lang 'search.product_results_title'}}
+            <span class="results-count">({{pagination.product_results.total}})</span>
+          </a>
+        </span>
+
+        &#47;
+
+        <span class="search-tab-title">
+          <a href="#content-results">
+            {{lang 'search.content_results_title'}}
+            <span class="results-count">
+              ({{pagination.content_results.total}})
+            </span>
+          </a>
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <section class="search-results">
+    <div class="container">
+
+      {{{snippet 'search'}}}
+
+      <div class="tabs-content">
+        <div class="tab-content-panel product-results" id="product-results">
+          <section class="product-listing">
+            {{> components/product-catalog/sort sort=pagination.pruduct_results.sort}}
+
+            <div data-facet-content>
+              {{> components/product-catalog/catalog-index}}
+            </div>
+          </section>
+        </div>
+        <div class="tab-content-panel content-results" id="content-results">
+          {{#if content_results}}
+            {{#each content_results}}
+              {{> components/search/content-item}}
+            {{/each}}
+            {{> components/common/pagination pagination.content_results}}
+          {{else}}
+            <h4>{{lang 'search.empty_content'}}</h4>
+          {{/if}}
+        </div>
+        <svg class="icon icon-spinner"><use xlink:href="#icon-spinner" /></svg>
+      </div>
+    </div>
+  </section>
+
+{{/partial}}
+
+{{> layout/base}}

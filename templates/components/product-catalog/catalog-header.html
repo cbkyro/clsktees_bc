@@ -1,0 +1,40 @@
+<header
+  class="
+    category-header
+    listing-header
+    page-header
+    {{#if category.image}}has-image{{/if}}
+  "
+>
+  {{#if catalog_type.image}}
+    {{#unless theme_settings.hide_listing_image}}
+      <div
+        class="
+          category-banner
+          {{#if catalog_type '===' brand}}brand-banner{{/if}}
+        "
+      >
+        <div
+          class="category-banner-image"
+          style="background-image: url('{{getImage catalog_type.image 'zoom'}}');"
+        >
+        </div>
+        <div class="category-banner-caption">
+          <h1 class="section-title">{{catalog_type.name}}</h1>
+        </div>
+      </div>
+    {{else}}
+      <h1 class="section-title banner-image-hidden">{{catalog_type.name}}</h1>
+    {{/unless}}
+  {{else}}
+    <h1 class="section-title">{{catalog_type.name}}</h1>
+  {{/if}}
+
+  {{#if catalog_type.description}}
+    <div class="listing-description">
+      <div class="container container-small">
+        {{{catalog_type.description}}}
+      </div>
+    </div>
+  {{/if}}
+</header>

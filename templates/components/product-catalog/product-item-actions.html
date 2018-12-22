@@ -1,0 +1,69 @@
+{{!--
+  TODO: when direct add to cart added to catalog pages add
+  `or customer (unless theme_settings.restrict_to_login)`
+--}}
+
+{{#if show_compare}}
+  <label
+    class="
+      button
+      button-short
+      {{#if product_grid}}
+        form-label
+      {{else}}
+        button-wide
+      {{/if}}
+      product-item-compare
+      override-dropdown
+    "
+    for="compare-{{id}}"
+  >
+    {{> components/common/compare-checkbox}}
+    <span>
+      <svg class="icon icon-check-mark">
+        <use xlink:href="#icon-check-mark" />
+      </svg>
+      {{lang "product.compare"}}
+    </span>
+  </label>
+{{/if}}
+
+{{#if quick_shop}}
+  <button
+    class="
+      button
+      button-secondary
+      {{#if product_grid}}
+        inverted
+      {{else}}
+        button-wide
+      {{/if}}
+      button-short
+    "
+    data-quick-shop="view"
+    data-product-id="{{id}}"
+  >
+    {{lang 'product.quick_view'}}
+  </button>
+{{else}}
+  <a
+  href="{{url}}"
+    class="
+      button
+      button-secondary
+      {{#if product_grid}}
+        inverted
+      {{else}}
+        button-wide
+      {{/if}}
+      button-short
+    "
+    data-product-href="{{url}}"
+  >
+    {{lang 'product.view_product'}}
+  </a>
+{{/if}}
+
+{{#unless product_grid}}
+  {{> components/product-catalog/product-item-quick-actions}}
+{{/unless}}

@@ -1,0 +1,44 @@
+{{!--
+  Product Grid
+
+  @param products
+    The list of product items to loop over / display.
+--}}
+{{> components/mobile-filters/mobile-filters}}
+{{> components/product-catalog/listing-utils}}
+<div
+  class="product-listing-grid grid"
+  data-category
+  {{#if catalog_type.show_compare}}
+    data-product-compare
+  {{/if}}
+>
+  {{#if catalog_type.products.length}}
+    <div class="listing-wrapper">
+      {{#each catalog_type.products}}
+        {{> components/product-catalog/product-item
+          catalog_view=../catalog_view
+          customer=../customer
+          show_rating=../settings.show_product_rating
+          show_compare=../catalog_type.show_compare
+          image_ratio=../theme_settings.product_grid_image_ratio
+          default_image=../theme_settings.default_image
+          quick_shop=../theme_settings.quick_shop
+          hide_brand=../theme_settings.product_brand_hidden
+          hide_price=../theme_settings.restrict_to_login
+          price_range_display=../theme_settings.price_range_display
+          retail_price_label=../theme_settings.retail-price-label
+          non_sale_price_label=../theme_settings.non-sale-price-label
+          sale_price_label=../theme_settings.sale-price-label
+          price_label=../theme_settings.price-label
+        }}
+      {{/each}}
+    </div>
+  {{else}}
+    <h3 class="listing-no-products">
+      {{lang 'common.no_products'}}
+    </h3>
+  {{/if}}
+
+  {{> components/common/pagination pagination}}
+</div>

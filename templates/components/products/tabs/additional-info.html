@@ -1,0 +1,17 @@
+<span class="accordion-title accordion-additional-info">
+  <a href="#product-additional-info" data-scroll="#product-additional-info">
+    {{lang 'product.additional_info'}}
+    <svg class="icon icon-chevron-down">
+      <use xlink:href="#icon-chevron-down" />
+    </svg>
+  </a>
+</span>
+<div
+  class="tab-content-panel additional-info-panel"
+  id="product-additional-info"
+  data-product-info
+>
+  <h2>{{lang 'product.additional_info'}}</h2>
+
+  {{> components/products/additional-info-fields}}
+</div>

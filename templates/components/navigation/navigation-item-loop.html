@@ -1,0 +1,85 @@
+<li class="parent-all nav-tier-item {{#if image}}has-image thumbnail-cover{{/if}}">
+  {{#if show_images}}
+    {{#if image}}
+      {{> components/common/image
+        img=image
+        url=url
+        size="nav-image"
+        class="nav-image"
+        default=default_image
+        image_ratio="ratio-4-3"
+        not_lazy=true
+      }}
+    {{/if}}
+  {{/if}}
+  <a href="{{url}}">
+    {{#if show_all}}
+      {{lang 'common.navigation_all' name=name}}
+    {{else}}
+      {{name}}
+    {{/if}}
+  </a>
+</li>
+{{#each children}}
+  {{#if children}}
+    <li
+      class="
+        nav-tier-item
+        has-children
+        {{#if image}}
+          has-image
+          thumbnail-cover
+        {{/if}}
+      "
+      data-tier
+    >
+      {{#if ../../show_images}}
+        {{#if image}}
+          {{> components/common/image
+            img=image
+            url=url
+            size="nav-image"
+            class="nav-image"
+            default=default_image
+            image_ratio="ratio-4-3"
+            not_lazy=true
+          }}
+        {{/if}}
+      {{/if}}
+      <a href="{{url}}" data-tier-toggle>
+        {{name}}
+        <svg class="icon icon-arrow-down">
+          <use xlink:href="#icon-arrow-down" />
+        </svg>
+      </a>
+      <ul class="dropdown-tier" data-tier-panel>
+        {{> components/navigation/navigation-item-loop
+          show_all=../../show_all
+          show_images=../../show_images
+        }}
+      </ul>
+    </li>
+  {{else}}
+    <li class="nav-tier-item {{#if image}}has-image thumbnail-cover{{/if}}">
+      {{#if ../../show_images}}
+        {{#if image}}
+          {{> components/common/image
+            img=image
+            url=url
+            size="nav-image"
+            class="nav-image"
+            default=default_image
+            image_ratio="ratio-4-3"
+            not_lazy=true
+          }}
+        {{/if}}
+      {{/if}}
+      <a href="{{url}}">
+        {{name}}
+      </a>
+    </li>
+  {{/if}}
+{{/each}}
+{{#for 1 6}}
+  <li class="nav-tier-item-empty"></li>
+{{/for}}

@@ -1,0 +1,15 @@
+<span class="accordion-title accordion-description-title">
+  <a href="#product-description" data-scroll="#product-description">
+    {{lang 'product.description'}}
+    <svg class="icon icon-chevron-down">
+      <use xlink:href="#icon-chevron-down" />
+    </svg>
+  </a>
+</span>
+<div class="tab-content-panel product-description" id="product-description">
+  <h2>{{lang 'product.description'}}</h2>
+  <div class="product-description-wrapper">
+    {{{product.description}}}
+    {{{snippet 'product_description'}}}
+  </div>
+</div>

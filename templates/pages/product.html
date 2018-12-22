@@ -1,0 +1,61 @@
+---
+product:
+  reviews:
+    limit: {{theme_settings.product-single-reviews-count}}
+  videos:
+    limit: {{theme_settings.product-single-videos-count}}
+  related_products:
+    limit: {{theme_settings.product-single-related-count}}
+brands: true
+---
+
+{{#partial "page"}}
+
+  <header class="page-header">
+    <div class="section-title">
+      {{> components/common/breadcrumbs breadcrumbs}}
+    </div>
+  </header>
+
+  {{> components/products/product-single-details}}
+  {{> components/products/product-single-tabs}}
+
+  {{#if product.related_products.length}}
+    <section class="products-home items-4 section" data-related-products>
+      <div class="container">
+        <h3 class="section-title">
+          {{lang 'product.related_products_heading'}}
+        </h3>
+        <div
+          class="product-grid related-products-grid"
+          data-related-products-slider
+        >
+          {{#each product.related_products}}
+            {{> components/product-catalog/product-item
+              catalog_view='grid'
+              customer=../customer
+              show_rating=../settings.show_product_rating
+              image_ratio=../theme_settings.product_grid_image_ratio
+              default_image=../theme_settings.default_image
+              as_low_as=../theme_settings.price_as_low_as
+              quick_shop=../theme_settings.quick_shop
+              hide_price=../theme_settings.restrict_to_login
+              hide_price=../theme_settings.restrict_to_login
+              price_range_display=../theme_settings.price_range_display
+              retail_price_label=../theme_settings.retail-price-label
+              non_sale_price_label=../theme_settings.non-sale-price-label
+              sale_price_label=../theme_settings.sale-price-label
+              price_label=../theme_settings.price-label
+            }}
+          {{/each}}
+        </div>
+      </div>
+    </section>
+  {{/if}}
+
+  {{> core/structured-data/product}}
+  {{> core/structured-data/product-reviews}}
+
+{{/partial}}
+
+{{> layout/base}}

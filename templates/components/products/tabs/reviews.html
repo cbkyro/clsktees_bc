@@ -1,0 +1,45 @@
+<span class="accordion-title accoridion-review-title">
+  <a href="#reviews" data-scroll="#reviews">
+    {{lang 'product.reviews_tab_title'}}
+    <svg class="icon icon-chevron-down">
+      <use xlink:href="#icon-chevron-down" />
+    </svg>
+  </a>
+</span>
+<div class="tab-content-panel review-panel" id="reviews">
+  <div class="product-reviews-header">
+    <h2 class="product-reviews-title">
+      {{lang 'product.reviews.title' numReviews=product.num_reviews}}
+    </h2>
+    <button class="button-review-modal button">
+      {{lang 'product.reviews.write_review'}}
+    </button>
+  </div>
+
+  {{{snippet 'reviews'}}}
+
+  {{#if product.reviews.list.length}}
+    <div class="review-items">
+      {{#each product.reviews.list}}
+        {{> components/products/review-item index=@index}}
+      {{/each}}
+    </div>
+
+    {{#if product.reviews.list.length '>' 2}}
+      <div class="reviews-more-wrap">
+        <a class="reviews-show-more-link" href="#">
+          {{lang 'product.reviews.show_more'}}
+          <svg class="icon icon-arrow-down">
+            <use xlink:href="#icon-arrow-down" />
+          </svg>
+        </a>
+      </div>
+    {{/if}}
+  {{else}}
+    <h5>{{lang 'product.reviews.no_reviews'}}</h5>
+  {{/if}}
+
+  <div class="modal-content-wrap" id="review-modal">
+    {{> components/products/review-form}}
+  </div>
+</div>

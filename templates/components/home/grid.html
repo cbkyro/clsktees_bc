@@ -1,0 +1,30 @@
+{{#if item_type}}
+  <section
+    class="
+      products-home
+      items-{{../limit}}
+      section
+      section-{{background}}
+    "
+  >
+    <h3 class="section-title">{{title}}</h3>
+    <div class="container" data-product-slider>
+      {{#each (limit item_type limit)}}
+        {{> components/product-catalog/product-item
+          catalog_view='grid'
+          image_ratio=../theme_settings.product_grid_image_ratio
+          default_image=../theme_settings.default_image
+          not_lazy=true
+          quick_shop=../theme_settings.quick_shop
+          hide_brand=../theme_settings.product_brand_hidden
+          hide_price=../theme_settings.restrict_to_login
+          price_range_display=../theme_settings.price_range_display
+          retail_price_label=../theme_settings.retail-price-label
+          non_sale_price_label=../theme_settings.non-sale-price-label
+          sale_price_label=../theme_settings.sale-price-label
+          price_label=../theme_settings.price-label
+        }}
+      {{/each}}
+    </div>
+  </section>
+{{/if}}

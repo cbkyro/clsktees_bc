@@ -1,0 +1,22 @@
+<section
+  class="
+    blog-latest-posts
+    items-{{number}}
+    section
+    section-{{background}}
+  "
+  data-home-blog
+>
+  <div class="container">
+    <h3 class="section-title">{{blog.name}}</h3>
+    <div>
+      <div class="blog-latest-posts-items" data-latest-posts-slider>
+        {{#each (limit blog.recent_posts limit)}}
+          {{> components/blog/blog-post-summary
+            summary_length=../theme_settings.blog-summary-length
+          }}
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</section>

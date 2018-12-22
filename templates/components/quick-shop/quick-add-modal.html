@@ -1,0 +1,59 @@
+{{> components/common/modal-close}}
+
+<div class="modal-body">
+  <div
+    class="quick-add-container product-block"
+    data-quick-shop-product
+    data-product-container
+    data-product-id="{{product.id}}"
+    data-product-title="{{this.product.title}}"
+  >
+    <div class="quick-add-header">
+      {{#unless hide_brand}}
+        {{#if product.brand}}
+          <div class="product-brand">{{product.brand.name}}</div>
+        {{/if}}
+      {{/unless}}
+
+      <h1 class="product-title">
+        <a href="{{product.url}}">{{this.product.title}}</a>
+      </h1>
+      <div class="product-item-price">
+        {{#or customer (unless theme_settings.restrict_to_login)}}
+          {{#if product.price}}
+            {{> core/products/price
+              price=product.price
+              show_savings=true
+              save_block=true
+              price_range_display=../theme_settings.price_range_display
+              retail_price_label=../theme_settings.retail-price-label
+              non_sale_price_label=../theme_settings.non-sale-price-label
+              sale_price_label=../theme_settings.sale-price-label
+              price_label=../theme_settings.price-label
+            }}
+          {{/if}}
+
+          {{#if product.call_for_price}}
+            <p>{{product.call_for_price}}</p>
+          {{/if}}
+        {{else}}
+          {{> components/common/login-for-pricing}}
+        {{/or}}
+      </div>
+    </div>
+
+    {{> components/products/add-to-cart-form}}
+
+    <div class="modal-content-wrap" id="create-wishlist">
+      {{> components/wishlist/wishlist-form}}
+    </div>
+
+    <a
+      class="quick-shop-details-lower link"
+      href="{{this.product.url}}"
+    >
+      {{lang 'product.view_full_details'}}
+    </a>
+    <div class="wishlist-alerts" data-wishlist-message></div>
+  </div>
+</div>

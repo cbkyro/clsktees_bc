@@ -1,0 +1,19 @@
+{{#if navigation '==' categories}}
+  {{#if style '==' 'dropdown-expanded'}}
+    {{#if children.length '==' 1}}
+      two-children
+    {{/if}}
+    {{#if children.length '==' 2}}
+      three-children
+    {{/if}}
+    {{#if children.length '==' 3}}
+      four-children
+    {{/if}}
+    {{#if children.length '==' 4}}
+      five-children
+    {{/if}}
+    {{#if children.length '>=' 5}}
+      six-children
+    {{/if}}
+  {{/if}}
+{{/if}}

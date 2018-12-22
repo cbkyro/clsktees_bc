@@ -1,0 +1,1 @@
+{"core/forms/advanced-search/search-categories-loop":"{{#each children}}\n  {{#if children}}\n    <li data-value=\"{{id}}\">\n      {{name}}\n      <ol>\n        {{> core/forms/advanced-search/search-categories-loop}}\n      </ol>\n    </li>\n  {{else}}\n    <li data-value=\"{{id}}\">\n      {{name}}\n    </li>\n  {{/if}}\n{{/each}}\n"}

@@ -1,0 +1,30 @@
+<section class="mobile-filters">
+  {{#if catalog_type.faceted_search_enabled}}
+    {{> components/mobile-filters/mobile-filter
+      label="faceted_search.mobile.filter_title"
+      type="filter"
+      title="faceted_search.mobile.filter_title"
+      catalog_type=catalog_type
+    }}
+  {{else}}
+    {{#any shop_by_brand.length catalog_type.subcategories}}
+      {{> components/mobile-filters/mobile-filter
+        label="faceted_search.mobile.browse_title"
+        type="browse"
+        title="faceted_search.mobile.browse_title"
+      }}
+    {{/any}}
+    {{#if catalog_type.shop_by_price}}
+      {{> components/mobile-filters/mobile-filter
+        label="faceted_search.mobile.price_label"
+        type="price"
+        title="faceted_search.mobile.price_title"
+      }}
+    {{/if}}
+  {{/if}}
+  {{> components/mobile-filters/mobile-filter
+    label="faceted_search.mobile.sort_title"
+    type="sortby"
+    title="faceted_search.mobile.sort_title"
+  }}
+</section>

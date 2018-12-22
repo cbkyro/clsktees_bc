@@ -1,0 +1,48 @@
+<div class="success-wrapper">
+  {{> components/common/modal-close}}
+  <div class="site-alerts modal-alerts" data-modal-alerts>
+  </div>
+  <div class="success-content">
+    <div class="success-item-wrap">
+    {{#with cart.added_item}}
+      <div class="success-item-thumb" style="background-image: url('{{getImage image 'thumb' (cdn ../../theme_settings.default_image)}}')"></div>
+      <img class="sr-only" src="{{getImage image 'thumb' (cdn ../theme_settings.default_image)}}" alt="{{image.alt}}" />
+      <div class="success-item-description">
+        <div class="success-item-brand">{{brand.name}}</div>
+        <div class="success-item-title">{{name}}</div>
+        {{#if options}}
+          <div class="success-product-option">
+            {{#each options}}
+              <span class="success-option-label">{{value}}</span>
+            {{/each}}
+          </div>
+        {{/if}}
+        {{#or customer (unless theme_settings.restrict_to_login)}}
+          <span class="success-item-price">
+            {{price.formatted}} &times; {{quantity}}
+          </span>
+        {{else}}
+          {{> components/common/login-for-pricing}}
+        {{/or}}
+      </div>
+    {{/with}}
+  </div>
+  <h4 class="success-modal-title">
+    <span>{{lang 'mini_cart.success_modal.subtotal'}}</span>
+    {{#or customer (unless theme_settings.restrict_to_login)}}
+      <span class="success-modal-subtotal">{{cart.sub_total.formatted}}</span>
+    {{else}}
+      {{> components/common/login-for-pricing}}
+    {{/or}}
+  </h4>
+  <div class="success-modal-actions">
+    <a class="button button-secondary" href="{{urls.cart}}">{{lang 'mini_cart.view_cart'}}</a>
+    <a class="button" href="{{urls.checkout.single_address}}">{{lang 'mini_cart.checkout'}}</a>
+  </div>
+  <div class="success-modal-additional-checkout">
+    {{#each cart.additional_checkout_buttons}}
+      {{{this}}}
+    {{/each}}
+  </div>
+  </div>
+</div>

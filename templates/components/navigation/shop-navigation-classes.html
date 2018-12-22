@@ -1,0 +1,17 @@
+{{#if style '==' 'dropdown-expanded'}}
+  {{#if categories.length '==' 2}}
+    two-children
+  {{/if}}
+  {{#if categories.length '==' 3}}
+    three-children
+  {{/if}}
+  {{#if categories.length '==' 4}}
+    four-children
+  {{/if}}
+  {{#if categories.length '==' 5}}
+    five-children
+  {{/if}}
+  {{#if categories.length '>=' 6}}
+    six-children
+  {{/if}}
+{{/if}}

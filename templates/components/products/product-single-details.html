@@ -1,0 +1,120 @@
+<section
+  class="
+    product-details
+    product-block
+    section
+    {{#unless quick_view}}
+      product-single
+    {{/unless}}
+  "
+  data-product-container
+  data-product-title="{{product.title}}"
+  data-product-id="{{product.id}}"
+>
+
+  <div class="container">
+    <div class="product-details-column {{#if product.images}}has-images{{/if}}">
+      {{> components/products/product-single-images
+        images=product.images
+      }}
+    </div>
+
+    <div class="product-details-column {{#if product.images}}has-images{{/if}}">
+      {{#if product.brand}}
+        <a class="product-brand" href="{{product.brand.url}}">
+          {{product.brand.name}}
+        </a>
+      {{/if}}
+
+      {{#if quick_view}}
+        <h1 class="product-title">
+          <a href="{{product.url}}">
+            {{this.product.title}}
+          </a>
+        </h1>
+      {{else}}
+        <h1 class="product-title">{{this.product.title}}</h1>
+      {{/if}}
+
+      <div class="product-item-price">
+        {{#or customer (unless theme_settings.restrict_to_login)}}
+          {{#if product.price}}
+            {{> core/products/price
+              price=product.price
+              show_savings=true
+              save_block=true
+              show_tax_labels=true
+              price_range_display=../theme_settings.price_range_display
+              retail_price_label=../theme_settings.retail-price-label
+              non_sale_price_label=../theme_settings.non-sale-price-label
+              sale_price_label=../theme_settings.sale-price-label
+              price_label=../theme_settings.price-label
+            }}
+          {{/if}}
+
+          {{#if product.call_for_price}}
+            <p>{{product.call_for_price}}</p>
+          {{/if}}
+        {{else}}
+          {{> components/common/login-for-pricing}}
+        {{/or}}
+      </div>
+
+      <div class="additional-info-details">
+        {{> components/products/additional-info-fields}}
+      </div>
+
+      <div class="product-rating-block">
+        {{#if settings.show_product_rating}}
+          <div class="product-item-rating">
+            {{> components/products/ratings rating=this.product.rating}}
+            <span class="total-reviews reviews-jumplink" data-scroll="#reviews">
+              <a
+                class="product-reviews-link"
+                href="{{#if quick_view}}{{product.url}}{{/if}}#reviews"
+              >
+                {{lang 'product.reviews.title' numReviews=product.num_reviews}}
+              </a>
+            </span>
+          </div>
+
+          {{{snippet 'product_rating'}}}
+        {{/if}}
+      </div>
+
+      {{#if product.release_date }}
+        <p class="message neutral">{{product.release_date}}</p>
+      {{/if}}
+
+      {{> components/products/add-to-cart-form}}
+
+      {{#if quick_view}}
+        <a
+          class="quick-shop-details-lower link"
+          href="{{this.product.url}}"
+        >
+          {{lang 'product.view_full_details'}}
+        </a>
+      {{/if}}
+
+      {{#any settings.add_this.buttons service='facebook_like'}}
+        <div class="share-block">
+          <span class="form-label-text share-title">{{lang 'product.share'}}</span>
+          {{> components/common/share-buttons
+            share_buttons=settings.add_this
+            url=product.url
+            image=(getImage product.main_image 'thumb')
+            title=product.title
+          }}
+        </div>
+      {{/any}}
+
+      {{{snippet 'product_details'}}}
+    </div>
+  </div>
+  <div class="modal-content-wrap" id="create-wishlist">
+    {{> components/wishlist/wishlist-form}}
+  </div>
+
+  <div class="wishlist-alerts" data-wishlist-message></div>
+</section>

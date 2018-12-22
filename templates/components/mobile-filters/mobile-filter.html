@@ -1,0 +1,68 @@
+<button
+    class="mobile-filter-toggle"
+    data-mobile-filter-toggle
+    data-mobile-filter-toggle-type="{{type}}"
+  >
+    {{lang label}}
+    {{> svg/arrow-right}}
+</button>
+
+<div
+  class="mobile-filter-content"
+  data-mobile-filter-content
+  data-mobile-filter-content-type="{{type}}"
+>
+  {{> components/common/modal-close}}
+  <h2 class="mobile-filter-title">{{lang title}}</h2>
+
+  {{#if type '===' 'filter'}}
+    {{> components/mobile-filters/facets}}
+    <div class="mobile-filter-actions">
+      <button
+        class="button button-primary mobile-facet-apply"
+        data-facet-modal-close
+      >
+        {{lang 'faceted_search.apply'}}
+      </button>
+      <a
+        class="facet-clear-all"
+        href="{{category.selected.remove_all_url}}"
+        data-faceted-search-facet
+        data-facet-remove
+      >
+        {{lang 'faceted_search.clear'}}
+      </a>
+    </div>
+  {{/if}}
+  {{#if type '===' 'browse'}}
+    {{#if catalog_type.subcategories}}
+      <h3 class="mobile-filter-subtitle">{{lang 'category.label'}}</h3>
+      {{> components/product-catalog/subcategory-brand-list
+        list=category.subcategories
+        title=(lang 'category.sub_categories')
+        arrow=true
+      }}
+    {{/if}}
+    {{#if shop_by_brand.length}}
+      <h3 class="mobile-filter-subtitle">{{lang 'brand.label'}}</h3>
+      {{> components/product-catalog/shop-by-brand
+        shop_by_brand=shop_by_brand
+        category_url=category.url
+        arrow=true
+      }}
+    {{/if}}
+  {{/if}}
+
+  {{#if type '===' 'price'}}
+    {{> components/product-catalog/shop-by-price
+      shop_by_price=catalog_type.shop_by_price
+      category_url=category.url
+    }}
+  {{/if}}
+
+  {{#if type '===' 'sortby'}}
+    {{> components/mobile-filters/mobile-sort
+      sort=pagination.sort
+    }}
+  {{/if}}
+</div>

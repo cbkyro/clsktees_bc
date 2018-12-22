@@ -1,0 +1,31 @@
+<div class="override-dropdown" data-dropdown-close>
+ {{> components/common/modal-close}}
+</div>
+<div>
+  <span class="wishlist-title">
+    {{lang "product.choose_wishlist"}}
+  </span>
+  <ul class="wishlist">
+    {{#if customer.wishlists}}
+      {{#each customer.wishlists}}
+        <li class="wishlist-item">
+          <a
+            href="{{../product.add_to_wishlist_url}}&wishlistid={{id}}"
+            data-wishlist="{{view_url}}"
+            data-name="{{name}}"
+          >
+            {{name}}
+          </a>
+        </li>
+      {{/each}}
+    {{/if}}
+    <li class="wishlist-item">
+      <a class="create-wishlist" href="#create-wishlist" data-create-wishlist>
+        <span class="create-wishlist-plus"></span>
+        <span class="create-wishlist-text">
+          {{lang "product.create_wishlist"}}
+        </span>
+      </a>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,160 @@
+<div class="dropdown-panel mega-nav-panel" data-dropdown-panel data-position-navigation>
+  <div
+    class="
+      navigation-container
+      {{#unless full_width}}
+        contained-width
+      {{/unless}}
+    "
+  >
+    <section class="navigation-root-container">
+      <ul class="navigation-root-list">
+        {{#each loop_item}}
+          <li
+            class="navigation-root-item"
+            data-child-category-id="{{id}}"
+            data-child-category-name="{{name}}"
+            data-navigation-root-item
+          >
+            <a href="{{url}}">{{name}}</a>
+          </li>
+        {{/each}}
+      </ul>
+    </section>
+    <section class="navigation-child-container">
+      <div class="navigation-breadcrumbs" data-navigation-breadcrumbs>
+        {{!-- Navigation breadcrumbs dynamically added --}}
+      </div>
+      {{#each loop_item}}
+        <div
+          class="navigation-child-list-container"
+          data-parent-category-id="{{id}}"
+          data-parent-category-name="{{name}}"
+        >
+          <h2 class="navigation-child-list-header">
+            {{name}}
+          </h2>
+          <div class="navigation-child-list-inner">
+            <ul class="navigation-child-list">
+              {{#each children}}
+                {{#if children}}
+                  <li
+                    class="
+                      navigation-child-item
+                      {{#if image}}
+                        has-image
+                        thumbnail-cover
+                      {{/if}}
+                    "
+                    data-child-category-id="{{id}}"
+                    data-child-category-name="{{name}}"
+                  >
+                    {{#if ../../../show_images}}
+                      {{#if image}}
+                        {{> components/common/image
+                          img=image
+                          url=url
+                          size="nav-image"
+                          class="nav-image"
+                          default=default_image
+                          image_ratio="ratio-4-3"
+                          not_lazy=true
+                        }}
+                      {{/if}}
+                    {{/if}}
+                    <a href="#">{{name}}</a>
+                    <ul class="dropdown-tier">
+                      <li class="parent-all nav-tier-item">
+                        <a href="{{url}}">
+                          {{lang 'common.navigation_all' name=name}}
+                        </a>
+                      </li>
+                      {{#each children}}
+                        {{#if children}}
+                          <li
+                            class="nav-tier-item has-children"
+                            data-child-category-id="{{id}}"
+                            data-child-category-name="{{name}}"
+                            data-find-child
+                          >
+                            <a href="{{url}}">
+                              {{name}}
+                              <svg class="icon icon-arrow-down">
+                                <use xlink:href="#icon-arrow-down" />
+                              </svg>
+                            </a>
+                          </li>
+                        {{else}}
+                          <li class="nav-tier-item">
+                            <a href="{{url}}">
+                              {{name}}
+                            </a>
+                          </li>
+                        {{/if}}
+                      {{/each}}
+                    </ul>
+                  </li>
+                {{else}}
+                  <li
+                    class="
+                      navigation-child-item
+                      {{#if image}}
+                        has-image
+                        thumbnail-cover
+                      {{/if}}
+                    "
+                  >
+                    {{#if ../../../show_images}}
+                      {{#if image}}
+                        {{> components/common/image
+                          img=image
+                          url=false
+                          size="nav-image"
+                          class="nav-image"
+                          default=default_image
+                          image_ratio="ratio-4-3"
+                          not_lazy=true
+                        }}
+                      {{/if}}
+                    {{/if}}
+                    <a href="{{url}}">{{name}}</a>
+                  </li>
+                {{/if}}
+              {{/each}}
+              <li
+                class="
+                  navigation-child-item
+                  {{#if image}}
+                    has-image
+                    thumbnail-cover
+                  {{/if}}
+                "
+              >
+                {{#if ../show_images}}
+                  {{#if image}}
+                    {{> components/common/image
+                      img=image
+                      url=false
+                      size="nav-image"
+                      class="nav-image"
+                      default=default_image
+                      image_ratio="ratio-4-3"
+                      not_lazy=true
+                    }}
+                  {{/if}}
+                {{/if}}
+                <a href="{{url}}">
+                  {{lang 'common.navigation_all' name=name}}
+                </a>
+              </li>
+              {{#for 1 3}}
+            	  <li class="navigation-child-item-empty"></li>
+              {{/for}}
+            </ul>
+          </div>
+        </div>
+        {{> components/navigation/mega-navigation-loop}}
+      {{/each}}
+    </section>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<span class="accordion-title accordion-video-title">
+  <a href="#product-videos" data-scroll="#product-videos">
+    {{lang 'product.video'}}
+    <svg class="icon icon-chevron-down">
+      <use xlink:href="#icon-chevron-down" />
+    </svg>
+  </a>
+</span>
+<div
+  class="
+    tab-content-panel
+    video-panel
+    {{#if theme_settings.product-single-videos-count '==' 0}}
+      video-disabled
+    {{/if}}
+  "
+  id="product-videos"
+>
+  <div class="product-videos-list">
+    {{#each product.videos.list}}
+      {{> components/products/video-block video=this}}
+    {{/each}}
+  </div>
+</div>

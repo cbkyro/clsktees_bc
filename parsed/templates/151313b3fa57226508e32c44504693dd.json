@@ -1,0 +1,1 @@
+{"core/forms/advanced-search/search-categories-selected":"{{#each children}}\n  {{#if selected}}\n   {{metadata.id}},\n  {{/if}}\n  {{#if children}}\n    {{> core/forms/advanced-search/search-categories-selected}}\n  {{/if}}\n{{/each}}\n"}

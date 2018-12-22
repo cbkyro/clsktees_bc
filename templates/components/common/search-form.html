@@ -1,0 +1,22 @@
+{{{snippet 'forms_search'}}}
+
+<form
+  class="search-form visible"
+  action="/search.php"
+  data-search-form
+  data-validated-form
+>
+  <div class="form-field">
+    <input
+      class="search-input form-input form-input-short"
+      name="search_query"
+      placeholder="{{lang 'header.search'}}"
+      data-search-input
+    >
+  </div>
+  <button class="button-search-submit" type="submit" data-search-submit>
+    <svg class="icon icon-search">
+      <use xlink:href="#icon-search" />
+    </svg>
+  </button>
+</form>

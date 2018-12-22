@@ -1,0 +1,210 @@
+<form
+  class="advanced-search-form"
+  id="advanced-search-content"
+  action="{{forms.search.action}}"
+  aria-hidden="true"
+  data-advanced-search-form
+  data-validated-form
+>
+  <input type="hidden" name="mode" value="1">
+  {{> core/forms/common/text
+    required=true
+    name="search_query_adv"
+    id="search_query_adv"
+    value=forms.search.query
+    label=(lang 'core.advanced_search.keyword')
+  }}
+
+  <div class="form-field">
+    <label class="form-label">
+      <span class="form-field-title">
+        {{lang 'core.advanced_search.categories'}}
+      </span>
+      <div class="form-field-group categories-group" data-search-category-tree>
+        <ol id="advanced-search-checkboxes" data-name="categories">
+          {{#each categories}}
+            {{#if children}}
+              <li data-value="{{id}}">
+                {{name}}
+                <ol>
+                  {{> core/forms/advanced-search/search-categories-loop}}
+                </ol>
+              </li>
+            {{else}}
+              <li data-value="{{id}}">
+                {{name}}
+              </li>
+            {{/if}}
+          {{/each}}
+        </ol>
+
+        <script type="application/json" data-search-selected>
+          [{{#each forms.search.category_options}}
+            {{#if selected}}
+             {{metadata.id}},
+            {{/if}}
+            {{#if children}}
+              {{> core/forms/advanced-search/search-categories-selected}}
+            {{/if}}
+          {{/each}}]
+        </script>
+      </div>
+    </label>
+  </div>
+  <div class="advanced-search">
+    <div class="advanced-search-price-range">
+      <span class="form-field-title">
+        {{lang 'core.advanced_search.price_range'}}
+      </span>
+      <div class="form-field">
+        <span class="sr-only">
+          {{lang 'core.advanced_search.price_range'}}
+        </span>
+        <input
+          class="form-input form-input-short"
+          name="price_from"
+          min="0"
+          type="number"
+          id="search-form-price_from"
+          value="{{forms.search.values.price_from}}"
+          placeholder="{{lang 'core.advanced_search.min_price'}}"
+        >
+      </div>
+      <div class="form-field">
+        <span class="sr-only">
+          {{lang 'core.advanced_search.price_range'}}
+        </span>
+        <input
+          class="form-input form-input-short"
+          name="price_to"
+          min="0"
+          type="number"
+          id="search-form-price_to"
+          value="{{forms.search.values.price_to}}"
+          placeholder="{{lang 'core.advanced_search.max_price'}}"
+        >
+      </div>
+    </div>
+    <div class="form-field form-field-select">
+      <label class="form-label" for="search-form-brand">
+        <span class="form-field-title">
+          {{lang 'core.advanced_search.brand'}}
+        </span>
+        <span class="form-field-control">
+          <div class="form-select-wrapper">
+            <select
+              class="form-input form-select"
+              name="brand"
+              id="search-form-brand"
+            >
+              <option value="">
+                {{lang 'core.advanced_search.no_preference'}}
+              </option>
+              {{#each forms.search.brands_list}}
+                <option
+                  value="{{id}}"
+                  {{#if ../forms.search.values.brand '==' id}}
+                    selected
+                  {{/if}}
+                >
+                  {{name}}
+                </option>
+              {{/each}}
+            </select>
+          </div>
+        </span>
+      </label>
+    </div>
+  </div>
+  <div class="advanced-search">
+    <div class="form-field form-field-select">
+      <label class="form-label" for="search-form-featured">
+        <span class="form-field-title">
+          {{lang 'core.advanced_search.featured_products.title'}}
+        </span>
+        <span class="form-field-control">
+          <div class="form-select-wrapper">
+            <select
+              class="form-input form-select"
+              name="featured"
+              id="search-form-featured"
+            >
+              <option value="">
+                {{lang 'core.advanced_search.no_preference'}}
+              </option>
+              <option
+                value="1"
+                {{#if forms.search.values.featured_products '===' '1'}}
+                  selected
+                {{/if}}
+              >
+                {{lang 'core.advanced_search.featured_products.enabled'}}
+              </option>
+              <option
+                value="2"
+                {{#if forms.search.values.featured_products '===' '2'}}
+                  selected
+                {{/if}}
+              >
+                {{lang 'core.advanced_search.featured_products.disabled'}}
+              </option>
+            </select>
+          </div>
+        </span>
+      </label>
+    </div>
+    <div class="form-field form-field-select">
+      <label class="form-label" for="search-form-shipping">
+        <span class="form-field-title">
+          {{lang 'core.advanced_search.free_shipping.title'}}
+        </span>
+        <span class="form-field-control">
+          <div class="form-select-wrapper">
+            <select
+              class="form-input form-select"
+              name="shipping"
+              id="search-form-shipping"
+            >
+              <option value="">
+                {{lang 'core.advanced_search.no_preference'}}
+              </option>
+              <option
+                value="1"
+                {{#if forms.search.values.free_shipping '===' '1'}}
+                  selected
+                {{/if}}
+              >
+                {{lang 'core.advanced_search.free_shipping.free'}}
+              </option>
+              <option
+                value="2"
+                {{#if forms.search.values.free_shipping '===' '2'}}
+                  selected
+                {{/if}}
+              >
+                {{lang 'core.advanced_search.free_shipping.paid'}}
+              </option>
+            </select>
+          </div>
+        </span>
+      </label>
+    </div>
+  </div>
+  <div class="form-actions">
+    <a
+      class="button button-secondary button-wide override-dropdown"
+      href="#"
+      data-dropdown-close
+    >
+      <span class="button-text">
+        {{lang 'core.advanced_search.cancel'}}
+      </span>
+    </a>
+    <input
+      id="advanced-search-submit"
+      class="button button-primary button-wide"
+      type="submit"
+      value="{{lang 'core.advanced_search.search'}}"
+    >
+  </div>
+</form>

@@ -1,0 +1,14 @@
+{{#each children}}
+  {{#if children}}
+    <li data-value="{{id}}">
+      {{name}}
+      <ol>
+        {{> core/forms/advanced-search/search-categories-loop}}
+      </ol>
+    </li>
+  {{else}}
+    <li data-value="{{id}}">
+      {{name}}
+    </li>
+  {{/if}}
+{{/each}}

@@ -1,0 +1,37 @@
+<aside class="listing-sidebar" data-catalog-sidebar>
+  {{#if theme_settings.restrict_to_login}}
+    {{> components/common/login-for-pricing}}
+  {{/if}}
+  {{#if catalog_type '==' category}}
+    {{> components/product-catalog/subcategory-brand-list
+      list=category.subcategories
+      title=(lang 'category.sub_categories')
+      arrow=false
+    }}
+  {{/if}}
+
+  {{#if catalog_type.faceted_search_enabled}}
+    <div class="faceted-search" data-faceted-search>
+      {{#if catalog_type.facets.length}}
+        {{> components/mobile-filters/facets}}
+      {{else}}
+        <div class="category-nav facet-list" data-facet-filter>
+          {{> components/common/facet-toggle
+            title=(lang 'category.filters')
+          }}
+          {{lang 'category.no_filters'}}
+        </div>
+      {{/if}}
+    </div>
+  {{else}}
+    {{> components/product-catalog/shop-by-price
+      shop_by_price=catalog_type.shop_by_price
+      category_url=catalog_type.url
+    }}
+
+    {{> components/product-catalog/shop-by-brand
+      category_url=catalog_type.url
+      arrow=false
+    }}
+  {{/if}}
+</aside>

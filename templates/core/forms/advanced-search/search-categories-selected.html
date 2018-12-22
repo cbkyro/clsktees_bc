@@ -1,0 +1,8 @@
+{{#each children}}
+  {{#if selected}}
+   {{metadata.id}},
+  {{/if}}
+  {{#if children}}
+    {{> core/forms/advanced-search/search-categories-selected}}
+  {{/if}}
+{{/each}}

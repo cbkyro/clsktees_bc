@@ -1,0 +1,69 @@
+<div class="sorting">
+  <form class="product-sort-select" method="get" data-sort-by>
+    <div class="form-field form-inline">
+        <label class="form-label-text" for="sort">{{lang 'common.sorter.sort_by'}}</label>
+        <div class="form-select-wrapper">
+          <select class="form-input form-select form-input-short dyna-width" name="sort" id="sort">
+            {{#if result_count}}
+              <option
+                value="featured"
+                {{#if sort '===' 'relevance'}}selected{{/if}}
+              >
+                {{lang 'common.sorter.relevance'}}
+              </label>
+            {{/if}}
+            <option
+              value="featured"
+              {{#if sort '===' 'featured'}}selected{{/if}}
+            >
+              {{lang 'common.sorter.featured'}}
+            </option>
+            <option
+              value="newest"
+              {{#if sort '===' 'newest'}}selected{{/if}}
+            >
+              {{lang 'common.sorter.newest'}}
+            </option>
+            <option
+              value="bestselling"
+              {{#if sort '===' 'bestselling'}}selected{{/if}}
+            >
+              {{lang 'common.sorter.top_sellers'}}
+            </option>
+            <option
+              value="alphaasc"
+              {{#if sort '===' 'alphaasc'}}selected{{/if}}
+            >
+              {{lang 'common.sorter.alpha_asc'}}
+            </option>
+            <option
+              value="alphadesc"
+              {{#if sort '===' 'alphadesc'}}selected{{/if}}
+            >
+              {{lang 'common.sorter.alpha_desc'}}
+            </option>
+            <option
+              value="avgcustomerreview"
+              {{#if sort '===' 'avgcustomerreview'}}selected{{/if}}
+            >
+              {{lang 'common.sorter.reviews'}}
+            </option>
+            <option
+              value="priceasc"
+              {{#if sort '===' 'priceasc'}}selected{{/if}}
+            >
+              {{lang 'common.sorter.price_asc'}}
+            </option>
+            <option
+              value="pricedesc"
+              {{#if sort '===' 'pricedesc'}}selected{{/if}}
+            >
+              {{lang 'common.sorter.price_desc'}}
+            </option>
+          </select>
+        </div>
+    </div>
+  </form>
+</div>
+
+{{!TODO: Show # per page}}

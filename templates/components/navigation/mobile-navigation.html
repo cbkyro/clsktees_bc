@@ -1,0 +1,51 @@
+<div
+  class="navigation-mobile {{#if theme_settings.flyout_menu}}flyout-menu{{/if}}"
+  data-navigation-mobile
+>
+  <section class="utils customer-utils">
+    {{#if currency_selector.currencies.length ">" 1}}
+      <div class="util">
+        {{> components/header/currency-selector}}
+      </div>
+    {{/if}}
+    {{#if settings.account_creation_enabled}}
+      <div class="util">
+        {{> components/header/account-button}}
+      </div>
+    {{/if}}
+  </section>
+
+  <nav class="navigation">
+    <ul>
+      {{#if theme_settings.global-show-home-in-nav}}
+        <li>
+          <a class="top-level-nav-link" href="{{urls.home}}">
+            {{lang 'header.home_nav_item'}}
+          </a>
+        </li>
+      {{/if}}
+      {{#if theme_settings.global-show-categories-in-nav}}
+        {{#if ../theme_settings.categories-display-type '===' 'categories-main-nav'}}
+          {{> components/navigation/main-navigation-list
+            navigation=categories
+            show_all=true
+            style='dropdown-standard'
+            show_images=false
+          }}
+        {{else}}
+          {{> components/navigation/shop-navigation-list
+            style='dropdown-standard'
+            show_images=false
+          }}
+        {{/if}}
+      {{/if}}
+      {{#if theme_settings.global-show-pages-in-nav}}
+        {{> components/navigation/main-navigation-list
+          navigation=pages
+          show_all=false
+          style='dropdown-standard'
+        }}
+      {{/if}}
+    </ul>
+  </nav>
+</div>

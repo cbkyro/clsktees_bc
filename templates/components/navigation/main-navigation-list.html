@@ -1,0 +1,77 @@
+{{#each navigation}}
+  {{#if children}}
+    <li
+      class="
+        main-nav-item
+        dropdown
+        {{#if ../../style '==' 'dropdown-standard'}}
+          pages-dropdown
+        {{/if}}
+        {{#if ../../style '==' 'dropdown-meganav'}}
+          mega-nav
+        {{/if}}
+        {{> components/navigation/main-navigation-classes
+          style=../../style
+        }}
+      "
+      data-dropdown
+    >
+      <a
+        class="dropdown-toggle top-level-nav-link items"
+        href="#"
+        data-dropdown-toggle
+      >
+        {{name}}
+        <svg class="icon icon-arrow-down">
+          <use xlink:href="#icon-arrow-down" />
+        </svg>
+      </a>
+      {{#if ../../style '==' 'dropdown-meganav'}}
+        {{> components/navigation/mega-navigation
+          full_width=../../../theme_settings.use-fullwidth
+          loop_item=children
+          show_images=../../../show_images
+        }}
+      {{else}}
+        <ul
+          class="
+            dropdown-panel
+            {{#if ../../../style '==' 'dropdown-standard'}}
+              pages-panel
+            {{/if}}
+          "
+          data-dropdown-panel
+          {{#unless ../../../style '==' 'dropdown-standard'}}
+            {{#if ../../../children.length '>=' 2}}
+              data-position-navigation
+            {{/if}}
+          {{/unless}}
+        >
+          {{#if ../../../style '==' 'dropdown-expanded'}}
+            <div
+              class="
+                dropdown-expanded-panel
+                {{#unless ../../../../theme_settings.use-fullwidth}}
+                  contained-width
+                {{/unless}}
+              "
+            >
+          {{/if}}
+          {{> components/navigation/navigation-item-loop
+            show_all=../../../show_all
+            show_images=../../../show_images
+          }}
+          {{#if ../../../style '==' 'dropdown-expanded'}}
+            </div>
+          {{/if}}
+        </ul>
+      {{/if}}
+    </li>
+  {{else}}
+    <li class="main-nav-item">
+      <a class="top-level-nav-link items" href="{{url}}">
+        {{name}}
+      </a>
+    </li>
+  {{/if}}
+{{/each}}

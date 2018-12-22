@@ -1,0 +1,114 @@
+{{!--
+  Product Item
+
+  Used in both grid and list layouts
+
+  @param collection_view theme-setting/JS
+    Theme setting and toggle on catalog pages to switch between grid/list views
+
+  @param show_rating platform-setting
+    Platform setting to toggle ratings
+
+  @param show_compare bool
+    Whether to show "compare" checkboxes
+
+  @param default_image theme-setting
+    The default image if none exists
+
+  @param as_low_as theme-setting
+    The setting to show/hide as low as price wording
+
+  @param quick_shop theme-setting
+    Theme setting to enable / disable quickshop
+--}}
+
+<article
+  class="product-{{catalog_view}}-item product-block"
+  data-product-title="{{name}}"
+  data-product-id="{{id}}"
+>
+  <div class="product-thumb-wrapper">
+    <figure class="product-item-thumbnail">
+      {{#if price.saved}}
+        <div class="product-badge sale">
+          <span class="message">{{lang 'product.sale'}}</span>
+        </div>
+      {{/if}}
+      {{#if out_of_stock_message}}
+        <div class="product-badge sold-out">
+          <span class="message">{{out_of_stock_message}}</span>
+        </div>
+      {{/if}}
+      <a href="{{url}}"
+        data-product-href="{{url}}"
+      >
+        {{> components/common/image
+          img=image
+          url=false
+          size="thumb"
+          default=default_image
+          image_ratio=image_ratio
+          not_lazy=not_lazy
+        }}
+        <div class="product-item-mask">
+          <div class="product-item-actions product-item-{{catalog_view}}-actions">
+            {{> components/product-catalog/product-item-actions
+              product_grid=true
+            }}
+          </div>
+        </div>
+      </a>
+    </figure>
+  </div>
+
+  <div class="product-item-details">
+    {{#if show_rating}}
+      <p class="product-item-rating">
+        {{> components/products/ratings rating=rating}}
+      </p>
+    {{/if}}
+
+    {{#unless hide_brand}}
+      {{#if brand.name}}
+        <div class="product-item-brand">{{brand.name}}</div>
+      {{/if}}
+    {{/unless}}
+
+    <h3 class="product-item-title">
+      <a href="{{{url}}}">{{name}}</a>
+    </h3>
+    <div
+      class="product-item-price"
+      data-product-price="{{price.without_tax.formatted}}"
+    >
+      {{#or customer (unless hide_price)}}
+        {{> core/products/price
+          price=price
+          show_tax_labels=true
+          show_sale_badges=false
+          price_range_display=price_range_display
+          retail_price_label=retail_price_label
+          non_sale_price_label=non_sale_price_label
+          sale_price_label=sale_price_label
+          price_label=price_label
+        }}
+      {{/or}}
+    </div>
+
+    <div class="product-description">
+      {{{summary}}}
+    </div>
+
+    <div class="product-item-actions product-item-{{catalog_view}}-actions">
+      {{> components/product-catalog/product-item-actions
+        product_grid=false
+      }}
+    </div>
+
+    {{> components/product-catalog/product-item-quick-actions
+      class="below-product-item"
+      hide_price=hide_price
+    }}
+
+  </div>
+</article>

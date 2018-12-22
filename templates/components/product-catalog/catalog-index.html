@@ -1,0 +1,60 @@
+{{!--
+  Product List -- Index
+
+  Wrapper around the product-list content that takes care of assigning the
+  values that the child templates will need. This is the template to call
+  via ajax when updating product list content.
+
+  # Summary of Component Tree:
+
+  Base Page: Category / Brand / Search
+    Product-Catalog Index (ajax content root)
+      Grid
+        Product Items
+
+--}}
+
+{{#if category}}
+  {{#unless theme_settings.collections-sidebar-hidden}}
+    {{> components/product-catalog/catalog-sidebar
+      catalog_type=category
+      pagination=pagination.category
+    }}
+  {{/unless}}
+
+  {{> components/product-catalog/grid
+    catalog_type=category
+    pagination=pagination.category
+    catalog_view=theme_settings.collections-view
+  }}
+{{/if}}
+
+{{#if brand}}
+  {{#unless theme_settings.collections-sidebar-hidden}}
+    {{> components/product-catalog/catalog-sidebar
+      catalog_type=brand
+      pagination=pagination.brand
+    }}
+  {{/unless}}
+
+  {{> components/product-catalog/grid
+    catalog_type=brand
+    pagination=pagination.brand
+    catalog_view=theme_settings.collections-view
+  }}
+{{/if}}
+
+{{#if product_results}}
+  {{#unless theme_settings.collections-sidebar-hidden}}
+    {{> components/product-catalog/catalog-sidebar
+      catalog_type=product_results
+      pagination=product_results
+    }}
+  {{/unless}}
+
+  {{> components/product-catalog/grid
+    catalog_type=product_results
+    pagination=pagination.product_results
+    catalog_view=theme_settings.collections-view
+  }}
+{{/if}}

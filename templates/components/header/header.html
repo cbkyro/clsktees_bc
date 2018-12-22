@@ -1,0 +1,121 @@
+<header class="site-header" role="banner">
+    {{> components/header/alert-messages}}
+  <div class="mobile-search-form" data-mobile-search>
+    {{> components/common/modal-close}}
+    {{> components/common/search-form}}
+    <div class="quick-search-mobile" data-quick-search></div>
+  </div>
+  <section
+    class="top-bar logo-align-{{theme_settings.header-logo-alignment}}"
+    data-header-container
+  >
+    <div class="container">
+      {{> components/header/mobile-nav-toggle}}
+
+      <a
+        class="mobile-compare-link button-compare-toggle"
+        href="{{urls.compare}}"
+        data-compare-link="{{urls.compare}}"
+      >
+        {{lang 'compare.compare_submit'}}
+        <span class="compare-items-count"></span>
+      </a>
+
+      {{> components/header/header-top-bar
+        alignment=theme_settings.header-logo-alignment
+      }}
+
+      <section class="utils mobile-customer-utils">
+        <div class="util search-util">
+          <button class="button-search-toggle" data-mobile-search-toggle>
+            <svg class="icon icon-search">
+              <use xlink:href="#icon-search" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="util">
+          <a class="cart-link" href="{{urls.cart}}">
+            <svg class="icon icon-cart">
+              <use xlink:href="#icon-cart" />
+            </svg>
+            <span
+              class="icon-cart-count {{#if cart.quantity '>' 0}}show{{/if}}"
+            >
+              <span class="number">{{cart.quantity}}</span>
+            </span>
+          </a>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <section class="main-nav-bar">
+    <div
+      class="
+        container
+        {{#if currency_selector.currencies.length '>' 1}}
+          has-currency-selector
+        {{/if}}
+      "
+      data-navigation-container
+    >
+      <div
+        class="navigation-overflow-scroll-arrow left-arrow"
+        data-navigation-scroll="left"
+      >
+        <svg class="icon icon-arrow-left">
+          <use xlink:href="#icon-arrow-left" />
+        </svg>
+      </div>
+      <nav
+        class="navigation style-{{theme_settings.dropdown-display-type}}"
+        data-navigation
+      >
+        <ul class="main-nav-list">
+          {{#if theme_settings.global-show-home-in-nav}}
+            <li class="main-nav-item">
+              <a class="top-level-nav-link" href="{{urls.home}}">
+                {{lang 'header.home_nav_item'}}
+              </a>
+            </li>
+          {{/if}}
+          {{#if theme_settings.global-show-categories-in-nav}}
+            {{#if theme_settings.categories-display-type '==' 'categories-main-nav'}}
+              {{> components/navigation/main-navigation-list
+                navigation=categories
+                show_all=true
+                style=theme_settings.dropdown-display-type
+                show_images=theme_settings.show-category-images
+              }}
+            {{else}}
+              {{> components/navigation/shop-navigation-list
+                style=theme_settings.dropdown-display-type
+                show_images=theme_settings.show-category-images
+              }}
+            {{/if}}
+          {{/if}}
+          {{#if theme_settings.global-show-pages-in-nav}}
+            {{> components/navigation/main-navigation-list
+              navigation=pages
+              show_all=false
+              style='dropdown-standard'
+            }}
+          {{/if}}
+        </ul>
+      </nav>
+      <div
+        class="navigation-overflow-scroll-arrow right-arrow"
+        data-navigation-scroll="right"
+      >
+        <svg class="icon icon-arrow-right">
+          <use xlink:href="#icon-arrow-right" />
+        </svg>
+      </div>
+      <div class="customer-utils">
+        {{> components/header/customer-utils}}
+      </div>
+    </div>
+  </section>
+
+</header>

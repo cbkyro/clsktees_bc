@@ -1,0 +1,71 @@
+{{> components/common/modal-close}}
+
+<div class="modal-body account-wrapper">
+  <div class="account-header">
+    <h1 class="account-heading">
+      {{lang 'core.account.wishlists.new'}}
+    </h1>
+  </div>
+  <div class="wishlist-add">
+    <header class="wishlist-header">
+      {{#if forms.wishlist.errors}}
+        {{> core/alerts/alert-error forms.wishlist.errors}}
+      {{/if}}
+    </header>
+
+    <form
+      class="form wishlist-form"
+      action="{{urls.account.wishlists.add}}&product_id={{product.id}}"
+      method="post"
+      data-validated-form
+      data-add-wishlist-form
+    >
+      <input type="hidden" name="submit">
+
+      {{> core/forms/common/text
+        required=true
+        name="wishlistname"
+        id="wishlistname"
+        value=forms.wishlist.name
+        label=(lang 'core.account.wishlists.wishlist_name')
+      }}
+
+      <div class="form-field form-field-checkbox">
+        <div class="form-field-control">
+          <label class="form-label">
+            <input
+              class="form-checkbox"
+              name="publicwishlist"
+              type="checkbox"
+              {{#if forms.wishlist.is_public}}checked{{/if}}
+              aria-required="false"
+            >
+            <span class="form-label-text">
+              {{lang 'core.account.wishlists.make_public'}}
+            </span>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        {{#if forms.wishlist.id}}
+          <input
+            type="submit"
+            class="button account-button-primary"
+            value="{{lang 'core.account.wishlists.save'}}"
+        >
+          <input type="hidden" name="wishlistid" value="{{forms.wishlist.id}}">
+        {{else}}
+          <button
+            type="submit"
+            class="button account-button-primary button-progress spinner"
+          >
+            <span class="button-text">
+              {{lang 'core.account.wishlists.create'}}
+            </span>
+          </button>
+        {{/if}}
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<div
+  class="product-wishlist {{#if customer.wishlists}}dropdown{{/if}}"
+  {{#if customer.wishlists}}data-dropdown{{/if}}
+  data-product-wishlist
+>
+  {{#if customer.wishlists}}
+    <div
+      class="
+        dropdown-panel
+        wishlist-dropdown
+        {{#unless product.can_purchase}}
+          no-add-to-cart
+        {{/unless}}
+      "
+      data-dropdown-panel
+    >
+      {{> components/wishlist/wishlist-lists}}
+    </div>
+    <a
+      class="
+        button
+        button-secondary
+        button-wide
+        dropdown-toggle
+        button-progress
+        spinner
+      "
+      href="#"
+      data-dropdown-toggle
+      data-product-wishlist
+    >
+      <span class="button-text">
+        {{lang 'product.add_to_wishlist'}}
+      </span>
+    </a>
+
+  {{else}}
+    <a
+      href="{{product.add_to_wishlist_url}}"
+      class="button button-secondary button-wide"
+    >
+      <span class="button-text">
+        {{lang 'product.add_to_wishlist'}}
+      </span>
+    </a>
+  {{/if}}
+</div>

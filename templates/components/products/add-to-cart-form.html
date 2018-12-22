@@ -1,0 +1,126 @@
+<form
+  method="post"
+  id="product-add-cart"
+  action="{{product.cart_url}}"
+  enctype="multipart/form-data"
+  data-cart-item-add
+  data-product-options-count="{{product.options.length}}"
+  data-validated-form
+  {{#if customer}}data-is-customer{{/if}}
+>
+  <input type="hidden" name="action" value="add">
+  <input type="hidden" name="product_id" value="{{product.id}}" data-product-id/>
+
+  <div class="product-options-container" data-product-option-change>
+    {{#if theme_settings.bulk_pricing_location '===' 'product-details-top'}}
+      {{> components/products/bulk-pricing}}
+    {{/if}}
+
+    {{#if product.customizations.length}}
+      {{#each product.customizations}}
+        {{{dynamicComponent 'core/forms/customizations'}}}
+      {{/each}}
+    {{/if}}
+
+    {{#if product.options.length}}
+      {{#each product.options}}
+        {{{dynamicComponent 'core/forms/options'}}}
+      {{/each}}
+    {{/if}}
+  </div>
+
+  {{#if product.event_date}}
+    {{> core/products/event}}
+  {{/if}}
+
+  <div
+    class="
+      product-stock
+      {{#unless product.show_quantity_input}}
+        default-layout
+      {{/unless}}
+    "
+  >
+    <span
+      class="{{#unless product.stock_level}}product-details-hidden{{/unless}}"
+      data-product-stock
+    >
+      {{lang 'product.current_stock'}}
+    </span>
+    <span
+      class="{{#unless product.stock_level}}product-details-hidden{{/unless}}"
+      data-product-stock
+      data-product-stock-level
+    >
+      {{#if product.stock_level}}
+        {{product.stock_level}}
+      {{else}}
+        0
+      {{/if}}
+    </span>
+
+    {{#if product.out_of_stock}}
+      <span class="stock-message">
+      {{#if product.out_of_stock_message}}
+        {{product.out_of_stock_message}}
+      {{else}}
+        {{lang 'product.sold_out'}}
+      {{/if}}
+    </span>
+    {{/if}}
+  </div>
+
+  {{#if product.show_quantity_input}}
+    <div class="product-quantity-container">
+      <div class="form-field">
+        <label class="form-label">
+          <span class="form-label-text product-option-title">
+            {{lang 'product.quantity'}}
+          </span>
+          {{> components/common/quantity product}}
+        </label>
+      </div>
+    </div>
+  {{/if}}
+
+  <div class="product-actions">
+    {{#if theme_settings.bulk_pricing_location '===' 'product-details-bottom'}}
+      {{> components/products/bulk-pricing}}
+    {{/if}}
+    {{#or customer (unless theme_settings.restrict_to_login)}}
+      {{#if product.can_purchase}}
+        <button
+          type="submit"
+          class="button button-primary button-wide add-to-cart button-progress spinner"
+          data-progress-complete="{{lang 'product.added'}}"
+          data-product-title="{{product.title}}"
+          data-button-purchase
+        >
+          <span class="button-text">
+            {{#if product.pre_order}}
+              {{lang 'product.pre_order'}}
+            {{else}}
+              {{lang 'product.add_to_cart'}}
+            {{/if}}
+          </span>
+        </button>
+      {{else}}
+        {{#if product.out_of_stock}}
+          <div class="button button-primary button-wide add-to-cart button-disabled">
+            {{lang 'product.sold_out'}}
+          </div>
+        {{/if}}
+      {{/if}}
+    {{/or}}
+
+    {{#if settings.show_wishlist}}
+      {{> components/wishlist/wishlist-buttons}}
+    {{/if}}
+
+    <div class="modal-content-wrap" id="success-modal">
+      {{> components/products/success-modal}}
+    </div>
+
+    <div class="product-message-area" data-product-message></div>
+  </div>
+</form>

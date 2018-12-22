@@ -1,0 +1,39 @@
+{{#if show_cart_action}}
+  {{#if has_options}}
+    <button
+      class="button button-wide button-short quick-action-button {{class}}"
+      data-quick-shop="add"
+      data-product-id="{{id}}"
+    >
+      {{lang 'product.pick_options'}}
+    </button>
+  {{else}}
+    {{#or customer (if hide_price '!==' true)}}
+      {{#if add_to_cart_url}}
+        <a
+          class="
+            button
+            button-wide
+            button-short
+            button-progress
+            quick-action-button
+            spinner
+            {{class}}
+          "
+          href="{{add_to_cart_url}}"
+          data-add-to-cart="{{id}}"
+          data-product-title="{{name}}"
+          data-button-purchase
+        >
+          <span class="button-text">
+            {{#if product.pre_order}}
+              {{lang 'product.pre_order'}}
+            {{else}}
+              {{lang 'product.add_to_cart'}}
+            {{/if}}
+          </span>
+        </a>
+      {{/if}}
+    {{/or}}
+  {{/if}}
+{{/if}}

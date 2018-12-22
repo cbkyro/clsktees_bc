@@ -1,0 +1,21 @@
+<div class="sidebar-block shop-by-brand facet-list" data-facet-filter>
+  {{> components/common/facet-toggle title=(lang 'category.shop_by_brand')}}
+  {{#if shop_by_brand.length}}
+    <ul class="facet-list-items is-open" data-facet-filter-wrapper>
+      {{#each shop_by_brand}}
+        <li class="facet-item">
+          <a
+            class="{{#if selected}}is-active{{/if}}"
+            rel="nofollow"
+            href="{{url}}"
+            alt="{{name}}"
+          >
+            {{name}} {{#if ../arrow}}{{> svg/arrow-right}}{{/if}}
+          </a>
+        </li>
+      {{/each}}
+    </ul>
+  {{else}}
+    {{lang 'category.no_brands_available'}}
+  {{/if}}
+</div>
