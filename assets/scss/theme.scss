@@ -8170,10 +8170,11 @@ $local-navbar-transition: all 0.6s ease;
 
 .main-nav-bar {
   position: relative;
-  background-color: $color-nav-background;
+  // background-color: $color-nav-background;
+  transition: all ease 0.2s;
 
   @if ($color-nav-background == $color-background) {
-    box-shadow: 0 1px 0 0 contrast($color-nav-background, 5%);
+    // box-shadow: 0 1px 0 0 contrast($color-nav-background, 5%);
   }
 
   @include media($max: $breakpoint-mobile-nav) {
@@ -8443,7 +8444,8 @@ $local-navbar-transition: all 0.6s ease;
     padding: rem-calc(19 18);
     font-size: rem-calc(14);
     font-weight: normal;
-    color: $color-nav;
+    // color: $color-nav;
+    color: #ffffff;
     text-transform: uppercase;
     transition: $local-navbar-transition;
 
@@ -11682,7 +11684,17 @@ $local-navbar-transition: all 0.6s ease;
 
   &.sticky {
     @include media($min: $breakpoint-m) {
-      padding-top: $expanded-nav-height;
+      // padding-top: $expanded-nav-height;
+
+      .main-nav-bar {
+        background-color: $color-nav-background;
+      }
+      .top-level-nav-link { 
+        color: $color-nav;
+      }
+      .icon {
+        fill: currentColor;
+      }
     }
   }
 
@@ -11757,7 +11769,11 @@ $local-navbar-transition: all 0.6s ease;
 
 /* scss-combine:layout/header */
 .site-header {
-  background-color: $color-background;
+  // background-color: $color-background;
+  position: absolute;
+  top: 0;
+  z-index: $navbar-z;
+  width: 100%;
 
   .sticky & {
     @include media($min: $breakpoint-mobile-nav) {
@@ -11792,7 +11808,7 @@ $local-navbar-transition: all 0.6s ease;
   position: relative;
   z-index: $navbar-z + 1;
   color: $color-topbar-text;
-  background-color: $color-topbar-background;
+  // background-color: $color-topbar-background;
   transition: background-color $transition-navbar 0.2s;
 
   @if ($color-topbar-background == $color-nav-background) {
@@ -11805,7 +11821,8 @@ $local-navbar-transition: all 0.6s ease;
 
   .icon {
     @extend %inline-middle;
-    fill: currentColor;
+    // fill: currentColor;
+    fill: #ffffff;
   }
 
   .container {
