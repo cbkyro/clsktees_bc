@@ -8325,10 +8325,12 @@ $local-navbar-transition: all 0.6s ease;
 
   .navigation {
     position: absolute;
-    left: 50%;
+    // left: 50%;
+      width: 100%;
+      text-align: center;
     z-index: $navbar-z;
     height: 100%;
-    transform: translateX(-50%);
+    // transform: translateX(-50%);
     transition: $local-navbar-transition;
 
     &.navigation-overflows {
