@@ -4505,13 +4505,15 @@ a.pswp__share--download {
 }
 
 .pswp__caption__center {
-	text-align: left;
+	text-align: center;
 	max-width: 420px;
 	margin: 0 auto;
-	font-size: 13px;
+	font-size: 15px;
 	padding: 10px;
 	line-height: 20px;
-	color: #CCC;
+  color: #CCC;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
 .pswp__caption--empty {
@@ -4870,7 +4872,7 @@ $breakpoint-xl: 1920px;
 $breakpoint-mobile-nav: $breakpoint-m;
 
 // Grid
-$max-width: 1230px;
+$max-width: 1600px;
 $gutter: 15px;
 $double-gutter: $gutter * 2;
 $border-radius: 4px;
@@ -5071,7 +5073,7 @@ $account-font-size: $font-size-body;
 }
 
 %h2 {
-  font-family: $font-secondary;
+  font-family: $font-primary;
   font-size: rem-calc(30);
   font-weight: 400;
   line-height: 1.333; // 40
@@ -5082,6 +5084,10 @@ $account-font-size: $font-size-body;
 
   @if ($font-secondary == "Playfair Display") {
     font-style: italic;
+  }
+
+  @if ($font-primary == "Roboto Condensed") {
+    text-transform: uppercase;
   }
 }
 
@@ -5099,6 +5105,7 @@ $account-font-size: $font-size-body;
   font-weight: 400;
   line-height: 1.1875; // 19
   font-style: normal;
+  text-transform: uppercase;
 
   @if $font-primary == "Oswald" {
     text-transform: uppercase;
@@ -8170,8 +8177,17 @@ $local-navbar-transition: all 0.6s ease;
 
 .main-nav-bar {
   position: relative;
-  // background-color: $color-nav-background;
+  background-color: $color-nav-background;
   transition: all ease 0.2s;
+  
+  &.home { 
+    
+    background-color: transparent;
+
+    .top-level-nav-link {
+      color: #ffffff;;
+    }
+  }
 
   @if ($color-nav-background == $color-background) {
     // box-shadow: 0 1px 0 0 contrast($color-nav-background, 5%);
@@ -8444,8 +8460,7 @@ $local-navbar-transition: all 0.6s ease;
     padding: rem-calc(19 18);
     font-size: rem-calc(14);
     font-weight: normal;
-    // color: $color-nav;
-    color: #ffffff;
+    color: $color-nav;
     text-transform: uppercase;
     transition: $local-navbar-transition;
 
@@ -11769,11 +11784,28 @@ $local-navbar-transition: all 0.6s ease;
 
 /* scss-combine:layout/header */
 .site-header {
-  // background-color: $color-background;
-  position: absolute;
-  top: 0;
-  z-index: $navbar-z;
-  width: 100%;
+  background-color: $color-background;
+
+  &.home {
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    z-index: $navbar-z;
+    width: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      background: -moz-linear-gradient(top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+    // transition: all ease 0.2s;
+
+    .icon {
+      fill: #ffffff;
+    }
+    .site-branding-logo {
+      filter: brightness(100%);
+      filter: drop-shadow(5px 5px #777777);
+    }
+  }
 
   .sticky & {
     @include media($min: $breakpoint-mobile-nav) {
@@ -11821,8 +11853,7 @@ $local-navbar-transition: all 0.6s ease;
 
   .icon {
     @extend %inline-middle;
-    // fill: currentColor;
-    fill: #ffffff;
+    fill: currentColor;
   }
 
   .container {
@@ -11856,6 +11887,10 @@ $local-navbar-transition: all 0.6s ease;
     height: auto;
     overflow-y: auto;
     z-index: $alert-z + 1;
+  }
+
+  .site-branding-logo {
+    filter: brightness(0);
   }
 
   .site-branding-logo,

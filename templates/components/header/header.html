@@ -1,4 +1,8 @@
+{{#if template_file '===' 'pages/home'}}
+<header class="site-header home" role="banner">
+  {{else}}
 <header class="site-header" role="banner">
+{{/if}}
     {{> components/header/alert-messages}}
   <div class="mobile-search-form" data-mobile-search>
     {{> components/common/modal-close}}
@@ -50,7 +54,11 @@
     </div>
   </section>
 
+  {{#if template_file '===' 'pages/home'}}
+  <section class="main-nav-bar home">
+  {{else}}
   <section class="main-nav-bar">
+  {{/if}}
     <div
       class="
         container
