@@ -21,13 +21,16 @@ blog:
 
   {{{snippet 'home_content'}}}
 
-  {{> components/home/blocks}}
-    
+
+  {{> components/home/blocks-02}}
+  
+  <div class="featured-grid">
   {{> components/home/section
     item_type=theme_settings.home_section_1_item_type
     background=theme_settings.home_section_1_background
     limit=theme_settings.home_section_1_limit
   }}
+  </div>
 
   {{> components/home/section
     item_type=theme_settings.home_section_2_item_type
