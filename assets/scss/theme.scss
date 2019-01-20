@@ -8223,6 +8223,7 @@ $local-navbar-transition: all 0.6s ease;
   }
 
   .navigation-overflow-scroll-arrow {
+    display: none !important; /* No use for this */
     position: absolute;
     height: $navbar-height;
     cursor: pointer;
@@ -8337,7 +8338,7 @@ $local-navbar-transition: all 0.6s ease;
 
     &.navigation-overflows {
       left: 0;
-      margin-left: rem-calc(30);
+      // margin-left: rem-calc(30);
       transform: translateX(0);
     }
 
@@ -8380,14 +8381,14 @@ $local-navbar-transition: all 0.6s ease;
 
   .navigation-overflows {
     .main-nav-list {
-      margin-right: rem-calc(70);
+      // margin-right: rem-calc(70);
 
       .sticky & {
-        margin-right: rem-calc(180);
+        // margin-right: rem-calc(180);
       }
 
       .sticky.customer-logged-in & {
-        margin-right: rem-calc(230);
+        // margin-right: rem-calc(230);
       }
     }
   }
@@ -8395,7 +8396,7 @@ $local-navbar-transition: all 0.6s ease;
   .navigation-overflows.sticky & {
     .has-currency-selector {
       .main-nav-list {
-        margin-right: rem-calc(270);
+        // margin-right: rem-calc(270);
       }
     }
   }
@@ -8403,7 +8404,7 @@ $local-navbar-transition: all 0.6s ease;
   .navigation-overflows.sticky.customer-logged-in & {
     .has-currency-selector {
       .main-nav-list {
-        margin-right: rem-calc(300);
+        // margin-right: rem-calc(300);
       }
     }
   }
@@ -10133,7 +10134,7 @@ $local-navbar-transition: all 0.6s ease;
   @include container();
 
   .pagination-item {
-    @include gallery(2 of 10);
+    @include gallery(4 of 10);
     margin-top: gutter();
   }
 
