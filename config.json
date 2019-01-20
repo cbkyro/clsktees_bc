@@ -1,10 +1,10 @@
 {
-  "name": "Merchant",
+  "name": "Classick",
   "version": "2.2.2",
   "meta": {
     "price": 17000,
-    "documentation_url": "http://support.pixelunion.net/category/159-merchant",
-    "composed_image": "merchant-composed.png",
+    "documentation_url": "http://www.classicktees.com",
+    "composed_image": "classick-composed.png",
     "features": [
       "fully_responsive",
       "mega_navigation",
@@ -29,9 +29,9 @@
       "account_payment_methods",
       "pixel_pop"
     ],
-    "author_name": "Pixel Union",
-    "author_email": "support@pixelunion.net",
-    "author_support_url": "http://support.pixelunion.net/"
+    "author_name": "C Ellis",
+    "author_email": "",
+    "author_support_url": ""
   },
   "css_compiler": "scss",
   "autoprefixer_cascade": true,
@@ -238,10 +238,10 @@
       "name": "Classic",
       "id": "classic",
       "meta": {
-        "desktop_screenshot": "merchant-classic.png",
-        "mobile_screenshot": "merchant-classic-mobile.png",
-        "description": "Merchant is a versatile, scalable theme that will grow with your store. Its clean design and four stylish presets provide a space for your products to shine. Ideally suited to catalogs large and small, Merchant is easy to set up, a pleasure to browse, and designed to get your customers to the checkout. ",
-        "demo_url": "http://merchant-classic-demo.mybigcommerce.com/",
+        "desktop_screenshot": "classick-classic.png",
+        "mobile_screenshot": "classick-classic-mobile.png",
+        "description": "",
+        "demo_url": "http://www.classicktees.com",
         "optimized_for": [
           "multi_purpose",
           "chrome_firefox_safari_ie_10",
@@ -333,10 +333,10 @@
       "name": "Light",
       "id": "light",
       "meta": {
-        "desktop_screenshot": "merchant-light.png",
-        "mobile_screenshot": "merchant-light-mobile.png",
-        "description": "Merchant is a versatile, scalable theme that will grow with your store. Its clean design and four stylish presets provide a space for your products to shine. Ideally suited to catalogs large and small, Merchant is easy to set up, a pleasure to browse, and designed to get your customers to the checkout. ",
-        "demo_url": "http://merchant-light-demo.mybigcommerce.com/",
+        "desktop_screenshot": "classick-light.png",
+        "mobile_screenshot": "classick-light-mobile.png",
+        "description": "",
+        "demo_url": "http://www.classicktees.com",
         "optimized_for": [
           "multi_purpose",
           "chrome_firefox_safari_ie_10",
@@ -429,10 +429,10 @@
       "name": "Bright",
       "id": "bright",
       "meta": {
-        "desktop_screenshot": "merchant-bright.png",
-        "mobile_screenshot": "merchant-bright-mobile.png",
-        "description": "Merchant is a versatile, scalable theme that will grow with your store. Its clean design and four stylish presets provide a space for your products to shine. Ideally suited to catalogs large and small, Merchant is easy to set up, a pleasure to browse, and designed to get your customers to the checkout. ",
-        "demo_url": "http://merchant-bright-demo.mybigcommerce.com/",
+        "desktop_screenshot": "classick-bright.png",
+        "mobile_screenshot": "classick-bright-mobile.png",
+        "description": "",
+        "demo_url": "http://www.classicktees.com",
         "optimized_for": [
           "multi_purpose",
           "chrome_firefox_safari_ie_10",
@@ -524,10 +524,10 @@
       "name": "Bold",
       "id": "bold",
       "meta": {
-        "desktop_screenshot": "merchant-bold.png",
-        "mobile_screenshot": "merchant-bold-mobile.png",
-        "description": "Merchant is a versatile, scalable theme that will grow with your store. Its clean design and four stylish presets provide a space for your products to shine. Ideally suited to catalogs large and small, Merchant is easy to set up, a pleasure to browse, and designed to get your customers to the checkout. ",
-        "demo_url": "http://merchant-bold-demo.mybigcommerce.com/",
+        "desktop_screenshot": "classick-bold.png",
+        "mobile_screenshot": "classick-bold-mobile.png",
+        "description": "",
+        "demo_url": "http://www.classicktees.com",
         "optimized_for": [
           "multi_purpose",
           "chrome_firefox_safari_ie_10",

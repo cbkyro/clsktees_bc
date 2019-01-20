@@ -19,7 +19,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### [2.2.0] - 2018-11-15
 #### Added
 - Want to save your credit card details for easier purchasing? You're in luck,
-  Merchant now supports it
+  Classick now supports it
 
 ### [2.1.3] - 2018-11-01
 #### Fixed
@@ -180,7 +180,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### [1.23.0] - 2018-03-15
 #### Added
-- Merchant supports AMP on it's category pages, so if users find your Category
+- Classick supports AMP on it's category pages, so if users find your Category
   page through a Google search on mobile, they can can browse with speed
 
 ### [1.22.0] - 2018-03-01

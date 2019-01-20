@@ -35,7 +35,11 @@
     {{/if}}
   </head>
 
-  <body class="{{page_type}} {{> components/common/body-classes}}" itemscope itemtype="http://schema.org/WebPage">
+  {{#if template_file '===' 'pages/home'}}
+    <body class="{{page_type}} {{> components/common/body-classes}} home" itemscope itemtype="http://schema.org/WebPage">
+  {{else}}
+    <body class="{{page_type}} {{> components/common/body-classes}}" itemscope itemtype="http://schema.org/WebPage">
+  {{/if}}
 
     {{#if page_type '===' 'product'}}
       {{> components/common/facebook-like}}

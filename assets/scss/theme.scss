@@ -1,4 +1,4 @@
-/*! Theme: Merchant v2.2.2 */
+/*! Theme: Classick v2.2.2 */
 // Libraries
 /* scss-combine:../../node_modules/normalize.scss/normalize */
 /*! normalize.scss v0.1.0 | MIT License | based on git.io/normalize */
@@ -7598,9 +7598,12 @@ table.geotrust-ssl-seal-table {
 .alert {
   position: relative;
   padding: rem-calc(16) rem-calc(32) rem-calc(16) rem-calc(16);
-  font-size: rem-calc(14);
+  font-size: rem-calc(20);
   color: $color-alert-text;
   text-align: center;
+  font-weight: $font-primary;
+  font-weight: bold;
+  text-transform: uppercase;
 
   &.dismissed { opacity: 0; }
 
@@ -8328,17 +8331,17 @@ $local-navbar-transition: all 0.6s ease;
 
   .navigation {
     position: absolute;
-    // left: 50%;
-      width: 100%;
-      text-align: center;
+    left: 50%;
+      // width: 100%;
+      // text-align: center;
     z-index: $navbar-z;
     height: 100%;
-    // transform: translateX(-50%);
+    transform: translateX(-50%);
     transition: $local-navbar-transition;
 
     &.navigation-overflows {
       left: 0;
-      // margin-left: rem-calc(30);
+      margin-left: rem-calc(30);
       transform: translateX(0);
     }
 
@@ -8381,14 +8384,14 @@ $local-navbar-transition: all 0.6s ease;
 
   .navigation-overflows {
     .main-nav-list {
-      // margin-right: rem-calc(70);
+      margin-right: rem-calc(70);
 
       .sticky & {
-        // margin-right: rem-calc(180);
+        margin-right: rem-calc(180);
       }
 
       .sticky.customer-logged-in & {
-        // margin-right: rem-calc(230);
+        margin-right: rem-calc(230);
       }
     }
   }
@@ -8396,7 +8399,7 @@ $local-navbar-transition: all 0.6s ease;
   .navigation-overflows.sticky & {
     .has-currency-selector {
       .main-nav-list {
-        // margin-right: rem-calc(270);
+        margin-right: rem-calc(270);
       }
     }
   }
@@ -8404,7 +8407,7 @@ $local-navbar-transition: all 0.6s ease;
   .navigation-overflows.sticky.customer-logged-in & {
     .has-currency-selector {
       .main-nav-list {
-        // margin-right: rem-calc(300);
+        margin-right: rem-calc(300);
       }
     }
   }
@@ -11709,17 +11712,17 @@ $local-navbar-transition: all 0.6s ease;
 
   &.sticky {
     @include media($min: $breakpoint-m) {
-      // padding-top: $expanded-nav-height;
+      padding-top: $expanded-nav-height;
 
-      .main-nav-bar {
-        background-color: $color-nav-background;
-      }
-      .top-level-nav-link { 
-        color: $color-nav;
-      }
-      .icon {
-        fill: currentColor;
-      }
+      // .main-nav-bar {
+      //   background-color: $color-nav-background;
+      // }
+      // .top-level-nav-link { 
+      //   color: $color-nav;
+      // }
+      // .icon {
+      //   fill: currentColor;
+      // }
     }
   }
 
@@ -11736,6 +11739,28 @@ $local-navbar-transition: all 0.6s ease;
 
   &.sticky.flyout-menu {
     padding-top: 0;
+  }
+}
+
+.home {
+  .site-wrapper {
+    width: 100%;
+  
+    &.sticky {
+      @include media($min: $breakpoint-m) {
+        // padding-top: $expanded-nav-height;
+  
+        .main-nav-bar {
+          background-color: $color-nav-background;
+        }
+        .top-level-nav-link { 
+          color: $color-nav;
+        }
+        .icon {
+          fill: currentColor;
+        }
+      }
+    }
   }
 }
 
