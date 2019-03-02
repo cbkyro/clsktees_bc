@@ -5167,11 +5167,13 @@ $account-font-size: $font-size-body;
       position: absolute;
       top: rem-calc(-30);
       left: 50%;
-      margin-left: -4px;
+      margin-left: -10px;
       font-size: rem-calc(23);
       line-height: 0;
       color: $color-accent;
-      content: "\00D7";
+      // content: "\00D7";
+      content: url('/assets/img/natuical-star.svg');
+      width: 20px;
     }
   }
 }
