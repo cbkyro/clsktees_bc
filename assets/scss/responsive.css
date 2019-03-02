@@ -49,6 +49,11 @@
     font-size: 52px;
   }
 }
+@media (max-width:991px) {
+  .b-goods-1 .b-goods__inner {
+    padding-right: 20px;
+  }
+}
 @media (max-width:1800px) {
   .b-goods-3 .b-goods__title {
     height: 171px;

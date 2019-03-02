@@ -31,12 +31,16 @@
 - FOOTER
 -------------------------------------------------------------------*/
 
-
 /* Sections */
 .section-area {
   position: relative;
 }
 
+@media (max-width: 991px) {
+  .section-area:nth-of-type(2) {
+    margin-bottom: 60px;
+  }
+}
 .section-default {
   position: relative;
   padding-top: 110px;

@@ -407,7 +407,7 @@
         "color-footer-background": "#f7f7f5",
         "color-footer-text": "#7d7a68",
         "logo_size": "300x200",
-        "dropdown-display-type": "dropdown-expanded",
+        "dropdown-display-type": "dropdown-standard",
         "home_section_2_background": "site-background",
         "use-fullwidth": false,
         "store-copyright": true,
