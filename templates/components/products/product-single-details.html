@@ -86,6 +86,16 @@
         <p class="message neutral">{{product.release_date}}</p>
       {{/if}}
 
+      {{#if product.description}}
+        <div class="tab-content-panel product-description" id="product-description">
+          <h4>{{lang 'product.description'}}</h4>
+          <div class="product-description-wrapper">
+            {{{product.description}}}
+            {{{snippet 'product_description'}}}
+          </div>
+        </div>
+      {{/if}}
+
       {{> components/products/add-to-cart-form}}
 
       {{#if quick_view}}

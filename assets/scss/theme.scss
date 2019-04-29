@@ -5144,8 +5144,14 @@ $account-font-size: $font-size-body;
 
 %label-text-treatment {
   color: $color-heading;
-  font-family: $font-secondary;
-  font-size: rem-calc(14);
+  // font-family: $font-secondary;
+  // font-size: rem-calc(14);
+  font-family: "Roboto Condensed" !important;
+  font-size: rem-calc(16);
+  font-weight: 400;
+  line-height: 1.1875; // 19
+  font-style: normal;
+  text-transform: uppercase;
 }
 
 %page-header-treatment {
@@ -10139,7 +10145,7 @@ $local-navbar-transition: all 0.6s ease;
   @include container();
 
   .pagination-item {
-    @include gallery(4 of 10);
+    @include gallery(2 of 10);
     margin-top: gutter();
   }
 
